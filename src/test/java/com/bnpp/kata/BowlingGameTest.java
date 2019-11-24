@@ -39,7 +39,17 @@ public class BowlingGameTest {
 	public void gameScoreShouldBe5When5PinsDownForSingleRoll() {
 		game.roll(5);
 		int gameScore = game.getGameScore();
-		
+
 		assertEquals(5, gameScore);
+	}
+
+	@Test
+	public void gameScoreShouldBe60When3PinsDown20Times() {
+		for(int rollCount = 0; rollCount < 20; rollCount++) {
+			game.roll(3);
+		}
+		int gameScore = game.getGameScore();
+
+		assertEquals(60, gameScore);
 	}
 }
