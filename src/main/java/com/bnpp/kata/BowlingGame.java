@@ -7,6 +7,7 @@ public class BowlingGame {
 	private int rollCount;
 
 	int calculateGameScore() {
+		gameScore = 0;
 		int rollCountToCalculate = rollCount > 20 ? 20 : rollCount; 
 		for (int rollPosition = 0; rollPosition < rollCountToCalculate; rollPosition++) {
 			gameScore += rollScore[rollPosition];

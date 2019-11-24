@@ -68,6 +68,15 @@ public class BowlingGameTest {
 		assertEquals(300, gameScore);
 	}
 
+	@Test
+	public void callCalculateGameScore2Times() {
+		rollMany(10, 1);
+		game.calculateGameScore();
+		int gameScore = game.calculateGameScore();
+
+		assertEquals(10, gameScore);
+	}
+
 	private void rollMany(final int numberOfRolls, final int numberOfPinsKnocked) {
 		for (int rollCount = 0; rollCount < numberOfRolls; rollCount++) {
 			game.roll(numberOfPinsKnocked);
