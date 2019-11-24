@@ -22,7 +22,7 @@ public class BowlingGameTest {
 
 	@Test
 	public void gameScoreShouldBeZeroBeforeGameStarts() {
-		int gameScore = game.getGameScore();
+		int gameScore = game.calculateGameScore();
 
 		assertEquals(0, gameScore);
 	}
@@ -30,7 +30,7 @@ public class BowlingGameTest {
 	@Test
 	public void gameScoreShouldBe0WhenNoPinDownForSingleRoll() {
 		game.roll(0);
-		int gameScore = game.getGameScore();
+		int gameScore = game.calculateGameScore();
 
 		assertEquals(0, gameScore);
 	}
@@ -38,7 +38,7 @@ public class BowlingGameTest {
 	@Test
 	public void gameScoreShouldBe5When5PinsDownForSingleRoll() {
 		game.roll(5);
-		int gameScore = game.getGameScore();
+		int gameScore = game.calculateGameScore();
 
 		assertEquals(5, gameScore);
 	}
@@ -46,7 +46,7 @@ public class BowlingGameTest {
 	@Test
 	public void gameScoreShouldBe60When3PinsDown20Times() {
 		rollMany(20, 3);
-		int gameScore = game.getGameScore();
+		int gameScore = game.calculateGameScore();
 
 		assertEquals(60, gameScore);
 	}
@@ -55,7 +55,7 @@ public class BowlingGameTest {
 	public void gameScoreShouldGetAddedWith2ImmediateNextRollsForStrike() {
 		game.roll(10);
 		rollMany(2, 2);
-		int gameScore = game.getGameScore();
+		int gameScore = game.calculateGameScore();
 
 		assertEquals(18, gameScore);
 	}
@@ -63,7 +63,7 @@ public class BowlingGameTest {
 	@Test
 	public void allStrikeRollsIncludeExtra2AtLastFrame() {
 		rollMany(12, 10);
-		int gameScore = game.getGameScore();
+		int gameScore = game.calculateGameScore();
 
 		assertEquals(300, gameScore);
 	}
