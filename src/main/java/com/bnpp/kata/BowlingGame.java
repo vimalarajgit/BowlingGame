@@ -12,11 +12,7 @@ public class BowlingGame {
 		for (int rollPosition = 0; rollPosition < rollCountToCalculate; rollPosition++) {
 			gameScore += rollScore[rollPosition];
 			calculateGameScoreWhenStrike(rollPosition);
-			if (rollPosition % 2 == 1 && rollScore[rollPosition] != 0) {
-				if (rollScore[rollPosition] + rollScore[rollPosition - 1] == 10) {
-					gameScore += rollScore[rollPosition + 1];
-				}
-			}
+			calculateGameScoreWhenSpare(rollPosition);
 		}
 		return gameScore;
 	}
@@ -32,12 +28,24 @@ public class BowlingGame {
 		}
 	}
 
+	private void calculateGameScoreWhenSpare(int rollPosition) {
+		if (rollPosition % 2 == 1 && !isStrike(rollPosition - 1)) {
+			if (rollScore[rollPosition] + rollScore[rollPosition - 1] == 10) {
+				gameScore += rollScore[rollPosition + 1];
+			}
+		}
+	}
+
 	private void calculateGameScoreWhenStrike(int rollPosition) {
-		if (rollScore[rollPosition] == 10) {
+		if (isStrike(rollPosition)) {
 			int nextRoll = rollScore[rollPosition + 2];
 			gameScore += nextRoll;
 			rollPosition = nextRoll == 10 && rollPosition < 18 ? rollPosition + 4 : rollPosition + 3;
 			gameScore += rollScore[rollPosition];
 		}
+	}
+
+	private boolean isStrike(int rollPosition) {
+		return rollScore[rollPosition] == 10;
 	}
 }

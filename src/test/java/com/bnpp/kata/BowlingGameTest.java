@@ -80,8 +80,7 @@ public class BowlingGameTest {
 	@Test
 	public void gameScoreShouldGetAddedWith1ImmediateNextRollForSpare() {
 		rollMany(2, 5);
-		game.roll(2);
-		game.roll(2);
+		rollMany(2, 2);
 		int gameScore = game.calculateGameScore();
 		assertEquals(16, gameScore);
 	}
