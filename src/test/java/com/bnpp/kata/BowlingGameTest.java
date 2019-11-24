@@ -26,4 +26,12 @@ public class BowlingGameTest {
 
 		assertEquals(0, gameScore);
 	}
+
+	@Test
+	public void gameScoreShouldBe0WhenNoPinDownForSingleRoll() {
+		game.roll(0);
+		int gameScore = game.getGameScore();
+
+		assertEquals(0, gameScore);
+	}
 }
