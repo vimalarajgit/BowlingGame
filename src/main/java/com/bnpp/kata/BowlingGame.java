@@ -1,31 +1,36 @@
 package com.bnpp.kata;
 
 public class BowlingGame {
-	
+
 	private int gameScore;
 	private int[] rollScore = new int[22];
 	private int rollCount;
 
 	int getGameScore() {
-		for(int rollPosition = 0; rollPosition < rollCount; rollPosition++) {
+		for (int rollPosition = 0; rollPosition < rollCount; rollPosition++) {
 			gameScore += rollScore[rollPosition];
-			if(rollScore[rollPosition] == 10) {
-				int nextRoll = rollScore[rollPosition+2];
-				gameScore += nextRoll;
-				if(nextRoll == 10) {
-					gameScore += rollScore[rollPosition+4];
-				} else {
-					gameScore += rollScore[rollPosition+3];
-				}
-			}
+			calculateGameScoreWhenStrike(rollPosition);
 		}
 		return gameScore;
 	}
 
-	void roll(int numberOfpinsKnocked) {
+	void roll(final int numberOfpinsKnocked) {
 		rollScore[rollCount++] = numberOfpinsKnocked;
-		if(numberOfpinsKnocked == 10) {
+		moveToNextFrameWhenStrikeAchieved(numberOfpinsKnocked);
+	}
+
+	private void moveToNextFrameWhenStrikeAchieved(final int numberOfpinsKnocked) {
+		if (numberOfpinsKnocked == 10) {
 			rollCount++;
+		}
+	}
+
+	private void calculateGameScoreWhenStrike(int rollPosition) {
+		if (rollScore[rollPosition] == 10) {
+			int nextRoll = rollScore[rollPosition + 2];
+			gameScore += nextRoll;
+			rollPosition = nextRoll == 10 ? rollPosition + 4 : rollPosition + 3;
+			gameScore += rollScore[rollPosition];
 		}
 	}
 }
