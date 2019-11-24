@@ -94,6 +94,14 @@ public class BowlingGameTest {
 		assertEquals(150, gameScore);
 	}
 
+	@Test
+	public void callRollUsingArray() {
+		game.callRollUsingArrayOfPins(2, 2, 2);
+		int gameScore = game.calculateGameScore();
+
+		assertEquals(6, gameScore);
+	}
+
 	private void rollMany(final int numberOfRolls, final int numberOfPinsKnocked) {
 		for (int rollCount = 0; rollCount < numberOfRolls; rollCount++) {
 			game.roll(numberOfPinsKnocked);
