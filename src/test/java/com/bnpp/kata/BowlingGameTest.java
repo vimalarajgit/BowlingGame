@@ -34,4 +34,12 @@ public class BowlingGameTest {
 
 		assertEquals(0, gameScore);
 	}
+
+	@Test
+	public void gameScoreShouldBe5When5PinsDownForSingleRoll() {
+		game.roll(5);
+		int gameScore = game.getGameScore();
+		
+		assertEquals(5, gameScore);
+	}
 }

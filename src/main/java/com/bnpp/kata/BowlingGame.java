@@ -1,11 +1,14 @@
 package com.bnpp.kata;
 
 public class BowlingGame {
+	
+	private int gameScore;
 
 	int getGameScore() {
-		return 0;
+		return gameScore;
 	}
 
 	void roll(int numberOfpinsKnocked) {
+		gameScore += numberOfpinsKnocked;
 	}
 }
