@@ -6,6 +6,12 @@ public class BowlingGame {
 	private int[] rollScore = new int[22];
 	private int rollCount;
 
+	public static void main(String[] args) {
+		BowlingGame game = new BowlingGame();
+		game.callRollUsingArrayOfPins(2, 2, 2);
+		System.out.println(game.calculateGameScore());
+	}
+
 	void callRollUsingArrayOfPins(int... pins) {
 		for (int rollCount = 0; rollCount < pins.length; rollCount++) {
 			roll(pins[rollCount]);
