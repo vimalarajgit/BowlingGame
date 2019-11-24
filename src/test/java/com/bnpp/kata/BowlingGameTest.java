@@ -51,8 +51,18 @@ public class BowlingGameTest {
 		assertEquals(60, gameScore);
 	}
 
+	@Test
+	public void gameScoreShouldGetAddedWith2ImmediateNextRollsForStrike() {
+		game.roll(10);
+		game.roll(2);
+		game.roll(2);
+		int gameScore = game.getGameScore();
+
+		assertEquals(18, gameScore);
+	}
+
 	private void roll20Times3Pins() {
-		for(int rollCount = 0; rollCount < 20; rollCount++) {
+		for (int rollCount = 0; rollCount < 20; rollCount++) {
 			game.roll(3);
 		}
 	}
