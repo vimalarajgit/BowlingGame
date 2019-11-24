@@ -77,6 +77,15 @@ public class BowlingGameTest {
 		assertEquals(10, gameScore);
 	}
 
+	@Test
+	public void gameScoreShouldGetAddedWith1ImmediateNextRollForSpare() {
+		rollMany(2, 5);
+		game.roll(2);
+		game.roll(2);
+		int gameScore = game.calculateGameScore();
+		assertEquals(16, gameScore);
+	}
+
 	private void rollMany(final int numberOfRolls, final int numberOfPinsKnocked) {
 		for (int rollCount = 0; rollCount < numberOfRolls; rollCount++) {
 			game.roll(numberOfPinsKnocked);

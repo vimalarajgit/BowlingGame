@@ -8,10 +8,15 @@ public class BowlingGame {
 
 	int calculateGameScore() {
 		gameScore = 0;
-		int rollCountToCalculate = rollCount > 20 ? 20 : rollCount; 
+		int rollCountToCalculate = rollCount > 20 ? 20 : rollCount;
 		for (int rollPosition = 0; rollPosition < rollCountToCalculate; rollPosition++) {
 			gameScore += rollScore[rollPosition];
 			calculateGameScoreWhenStrike(rollPosition);
+			if (rollPosition % 2 == 1 && rollScore[rollPosition] != 0) {
+				if (rollScore[rollPosition] + rollScore[rollPosition - 1] == 10) {
+					gameScore += rollScore[rollPosition + 1];
+				}
+			}
 		}
 		return gameScore;
 	}
