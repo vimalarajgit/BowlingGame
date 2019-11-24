@@ -45,11 +45,15 @@ public class BowlingGameTest {
 
 	@Test
 	public void gameScoreShouldBe60When3PinsDown20Times() {
-		for(int rollCount = 0; rollCount < 20; rollCount++) {
-			game.roll(3);
-		}
+		roll20Times3Pins();
 		int gameScore = game.getGameScore();
 
 		assertEquals(60, gameScore);
+	}
+
+	private void roll20Times3Pins() {
+		for(int rollCount = 0; rollCount < 20; rollCount++) {
+			game.roll(3);
+		}
 	}
 }
