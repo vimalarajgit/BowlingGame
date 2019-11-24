@@ -85,6 +85,15 @@ public class BowlingGameTest {
 		assertEquals(16, gameScore);
 	}
 
+	@Test
+	public void allRollsAreSpare() {
+		rollMany(21, 5);
+
+		int gameScore = game.calculateGameScore();
+
+		assertEquals(150, gameScore);
+	}
+
 	private void rollMany(final int numberOfRolls, final int numberOfPinsKnocked) {
 		for (int rollCount = 0; rollCount < numberOfRolls; rollCount++) {
 			game.roll(numberOfPinsKnocked);
