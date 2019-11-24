@@ -60,6 +60,14 @@ public class BowlingGameTest {
 		assertEquals(18, gameScore);
 	}
 
+	@Test
+	public void allStrikeRollsIncludeExtra2AtLastFrame() {
+		rollMany(12, 10);
+		int gameScore = game.getGameScore();
+
+		assertEquals(300, gameScore);
+	}
+
 	private void rollMany(final int numberOfRolls, final int numberOfPinsKnocked) {
 		for (int rollCount = 0; rollCount < numberOfRolls; rollCount++) {
 			game.roll(numberOfPinsKnocked);

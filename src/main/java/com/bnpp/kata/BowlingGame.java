@@ -7,7 +7,8 @@ public class BowlingGame {
 	private int rollCount;
 
 	int getGameScore() {
-		for (int rollPosition = 0; rollPosition < rollCount; rollPosition++) {
+		int rollCountToCalculate = rollCount > 20 ? 20 : rollCount; 
+		for (int rollPosition = 0; rollPosition < rollCountToCalculate; rollPosition++) {
 			gameScore += rollScore[rollPosition];
 			calculateGameScoreWhenStrike(rollPosition);
 		}
@@ -20,7 +21,7 @@ public class BowlingGame {
 	}
 
 	private void moveToNextFrameWhenStrikeAchieved(final int numberOfpinsKnocked) {
-		if (numberOfpinsKnocked == 10) {
+		if (numberOfpinsKnocked == 10 && rollCount < 20) {
 			rollCount++;
 		}
 	}
@@ -29,7 +30,7 @@ public class BowlingGame {
 		if (rollScore[rollPosition] == 10) {
 			int nextRoll = rollScore[rollPosition + 2];
 			gameScore += nextRoll;
-			rollPosition = nextRoll == 10 ? rollPosition + 4 : rollPosition + 3;
+			rollPosition = nextRoll == 10 && rollPosition < 18 ? rollPosition + 4 : rollPosition + 3;
 			gameScore += rollScore[rollPosition];
 		}
 	}
